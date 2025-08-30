@@ -6,8 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:AhmedSoliman92/k8s-monitoring.git
-    targetRevision: HEAD
+    repoURL: https://github.com/AhmedSoliman92/k8s-monitoring.git
     path: apps/dev
     directory:
       rescurse: true
@@ -18,3 +17,10 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+argocd app create monitoring-dev \
+  --repo https://github.com/your-user/k8s-monitoring.git \
+  --path apps/dev \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace monitoring \
+  --directory-recurse
