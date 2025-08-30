@@ -1,15 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring-dev
+  name: oracle-exporter
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/AhmedSoliman92/k8s-monitoring.git
-    path: apps/dev
-    directory:
-      recurse: true
+    path: apps/dev/oracle-exporter/overlays
+    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: moni
