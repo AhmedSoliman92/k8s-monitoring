@@ -1,5 +1,6 @@
 resources:
   - ../base
+  - secrets/db-sealedsecret.yaml
 namePrefix: dev-
 configMapGenerator:
   - name: metrics-exporter-config
