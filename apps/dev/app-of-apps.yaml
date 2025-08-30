@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/vqalpha1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: monitoring-dev
