@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle-exporter
+  namespace: moni
+spec:
+  selector:
+    matchLabels:
+      app: oracle-exporter
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: oracle-exporter
+    spec:
+      containers:
+      - name: oracle-exporter
+        image: container-registry.oracle.com/database/observability-exporter:2.0.2
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-cred
+              key: db-password.txt
+        - name: DB_USERNAME
+          value: soli
+        - name: DB_CONNECT_STRING
+          valueFrom:
+            secretKeyRef:
+              name: db-connect
+              key: db-connect.txt
+
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: 64Mi
+            cpu: 250m
+        ports:
+        - containerPort: 8080

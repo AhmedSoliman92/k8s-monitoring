@@ -1,0 +1,17 @@
+resources:
+  - ../base
+  - secret.yaml
+namePrefix: dev-
+commonLabels:
+  environment: dev
+configMapGenerator:
+  - name: metrics-exporter-config
+    files:
+    - metrics-exporter-config.yaml
+secretGenerator:
+  - name: db-cred
+    files:
+    - /secrets/db-password.txt
+  - name: db-connect
+    files:
+    - /secrets/db-connect.txt
