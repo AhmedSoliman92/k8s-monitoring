@@ -20,14 +20,14 @@ spec:
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: db-cred
+              name: dev-db-cred
               key: db-password.txt
         - name: DB_USERNAME
           value: soli
         - name: DB_CONNECT_STRING
           valueFrom:
             secretKeyRef:
-              name: db-cred
+              name: dev-db-cred
               key: db-connect.txt
 
         resources:
