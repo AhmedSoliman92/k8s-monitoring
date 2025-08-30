@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/vqalpha1
+kind: Application
+metadata:
+  name: monitoring-dev
+  namespace: argcd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:AhmedSoliman92/k8s-monitoring.git
+    targetRevision: HEAD
+    path: apps/dev
+    directory:
+      rescurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
