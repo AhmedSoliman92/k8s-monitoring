@@ -17,10 +17,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
-argocd app create monitoring-dev \
-  --repo https://github.com/your-user/k8s-monitoring.git \
-  --path apps/dev \
-  --dest-server https://kubernetes.default.svc \
-  --dest-namespace monitoring \
-  --directory-recurse
