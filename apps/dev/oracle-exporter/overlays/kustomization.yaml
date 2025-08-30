@@ -2,8 +2,6 @@ resources:
   - ../base
   - secret.yaml
 namePrefix: dev-
-commonLabels:
-  environment: dev
 configMapGenerator:
   - name: metrics-exporter-config
     files:
