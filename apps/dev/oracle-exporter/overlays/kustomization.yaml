@@ -6,5 +6,5 @@ generatorOptions:
 configMapGenerator:
   - name: metrics-exporter-config
     files:
-    - metrics-exporter-config.yaml
+      - metrics-exporter-config.yaml
 
