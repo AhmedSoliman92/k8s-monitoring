@@ -29,7 +29,9 @@ spec:
             secretKeyRef:
               name: db-cred
               key: db-connect.txt
-
+        volumeMounts:
+          - name: exporter-config
+            mountPath: /config
         resources:
           limits:
             memory: "128Mi"
@@ -39,3 +41,8 @@ spec:
             cpu: 250m
         ports:
         - containerPort: 9161
+      volumes:
+        - name: exporter-config
+          configMap:
+            name: metrics-exporter-config
+
