@@ -1,5 +1,5 @@
 resources:
-  - ../../base
+  - ../base
   - secrets/db-sealedsecret.yaml
 generatorOptions:
   disableNameSuffixHash: false
