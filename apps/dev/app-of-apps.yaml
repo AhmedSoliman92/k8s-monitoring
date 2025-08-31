@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/AhmedSoliman92/k8s-monitoring.git
-    path: apps/dev
+    path: apps/dev/apps
     directory:
       recurse: true
   destination:
