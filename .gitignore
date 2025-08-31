@@ -2,3 +2,4 @@ apps/dev/oracle-exporter/overlays/secrets/db-connect.txt
 apps/dev/oracle-exporter/overlays/secrets/db-password.txt
 apps/dev/oracle-exporter/overlays/secrets/db-secret.yaml
 apps/dev/oracle-exporter/overlays/secrets/.DS*
+apps/dev/oracle-exporter/overlays/secrets/sealed-secrets-cert.pem
