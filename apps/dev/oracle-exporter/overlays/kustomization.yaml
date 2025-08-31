@@ -2,7 +2,7 @@ resources:
   - ../base
   - secrets/db-sealedsecret.yaml
 generatorOptions:
-  disableNameSuffixHash: false
+  disableNameSuffixHash: true
 configMapGenerator:
   - name: metrics-exporter-config
     files:
