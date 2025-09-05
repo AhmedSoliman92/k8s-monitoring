@@ -14,4 +14,4 @@ data:
           - targets: ['localhost:9090']
       - job_name: "oracle"
         static_configs:
-          - targets: ['localhost:9161']
+          - targets: ['oracle-exporter:9161/metrics']
