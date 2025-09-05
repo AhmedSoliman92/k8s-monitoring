@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/AhmedSoliman92/k8s-monitoring.git
-    path: apps/dev/oracle-exporter/overlays
+    path: apps/dev/grafana/overlays
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
