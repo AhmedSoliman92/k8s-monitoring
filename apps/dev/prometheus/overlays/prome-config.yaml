@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prome-config
-  namespace: prometheus
+  namespace: moni
 data:
   prometheus.yml: |
     global:
