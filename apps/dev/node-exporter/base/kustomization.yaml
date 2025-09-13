@@ -1,0 +1,3 @@
+resources:
+  - daemonSet.yaml
+  - service.yaml
