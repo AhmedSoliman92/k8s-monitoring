@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: moni
+data:
+  rules.yml: |
+      groups:
+      - name: oracle-rules
+        rules:
+        - alert: OracleDown
+          expr: oracledb_up == 0
+          for: 5m
+          keep_firing_for: 3600m
+          labels:
+            severity: critical
+          annotations:
+            summary: Oracle Database is Dowm
+            description: "Oracle database {{ $labels.instance }} has been unreachable for more than 5 minutes."
+        - alert: OracleHighLatency
+          expr: oracledb_exporter_last_scrape_duration_seconds > 5
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: Oracle Scrape is slow
+            description: "Oracle exporter scrape took more than 5 seconds on {{ $labels.instance }}."
+      - name: node.rules
+        rules:
+        - alert: NodeDown
+          expr: up{job="node-exporter"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Node is down"
+            description: "The node instance {{ $labels.instance }} has been down for more than 5 minutes."
+        - alert: HighCPUUsage
+          expr: 100 - (avg by(instance)(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High CPU usage"
+            description: "Node {{ $labels.instance }} CPU usage > 80% for 10m."

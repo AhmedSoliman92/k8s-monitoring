@@ -1,4 +1,4 @@
 resources:
   - ../base
   - prome-config.yaml
-  - oracle-rules.yaml
+  - rules.yaml
