@@ -6,7 +6,7 @@ metadata:
 data:
   oracle-rules.yml: |
       groups:
-      - name:
+      - name: oracle-rules
         rules:
         - alert: OracleDown
           expr: oracledb_up == 0
