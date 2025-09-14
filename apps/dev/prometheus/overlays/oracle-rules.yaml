@@ -1,26 +1,27 @@
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
+apiVersion: v1
+kind: ConfigMap
 metadata:
-  name: oracle-exporter-rules
+  name: prometheus-rules
   namespace: moni
-spec:
-  group:
-  - name:
-    rules:
-    - alert: OracleDown
-      expr: oracledb_up == 0
-      for: 5m
-      keep_firing_for: 3600m
-      labels:
-        severity: critical
-      annotations:
-        summary: Oracle Database is Dowm
-        description: "Oracle instance {{ $labels.instance }} has been unreachable for more than 5 minutes."
-    - alert: OracleHighLatency
-      expr: oracledb_exporter_last_scrape_duration_seconds > 5
-      for: 5m
-      labels:
-        severity: warning
-      annotations:
-        summary: Oracle Scrape is slow
-        description: "Oracle exporter scrape took more than 5 seconds on {{ $labels.instance }}."
+data:
+  oracle-rules.yml: |
+      groups:
+      - name:
+        rules:
+        - alert: OracleDown
+          expr: oracledb_up == 0
+          for: 5m
+          keep_firing_for: 3600m
+          labels:
+            severity: critical
+          annotations:
+            summary: Oracle Database is Dowm
+            description: "Oracle instance {{ $labels.instance }} has been unreachable for more than 5 minutes."
+        - alert: OracleHighLatency
+          expr: oracledb_exporter_last_scrape_duration_seconds > 5
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: Oracle Scrape is slow
+            description: "Oracle exporter scrape took more than 5 seconds on {{ $labels.instance }}."

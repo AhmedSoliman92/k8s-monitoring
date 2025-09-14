@@ -22,4 +22,6 @@ data:
           - source_labels: [__meta_kubernetes_service_label_app]
             action: keep
             regex: node-exporter
+    rule_files:
+      - "/etc/prometheus/rules/*.yml"
 
